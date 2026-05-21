@@ -1,0 +1,407 @@
+:root {
+  --paper: #b78b58;
+  --paper-dark: #7f5731;
+  --paper-light: #dfbd83;
+  --ink: #3c2414;
+  --rose: #a84c3f;
+  --rose-soft: #d9a79a;
+  --mustard: #c18d3f;
+  --shadow: rgba(42, 23, 11, 0.32);
+  --glow: rgba(255, 206, 139, 0.28);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Times New Roman", "STSong", "Songti SC", serif;
+  background:
+    radial-gradient(circle at 24% 18%, rgba(255, 231, 177, 0.42), transparent 28rem),
+    radial-gradient(circle at 78% 70%, rgba(87, 48, 22, 0.24), transparent 34rem),
+    linear-gradient(115deg, #9a6a3a 0%, #d2a76a 42%, #a06e3c 100%);
+  overflow-x: hidden;
+}
+
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+body::before {
+  opacity: 0.38;
+  background-image:
+    linear-gradient(90deg, rgba(82, 43, 16, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(255, 240, 201, 0.08) 1px, transparent 1px),
+    repeating-linear-gradient(7deg, rgba(255, 246, 216, 0.08) 0 1px, transparent 1px 9px);
+  background-size: 7px 7px, 11px 11px, 100% 100%;
+  mix-blend-mode: multiply;
+}
+
+body::after {
+  opacity: 0.28;
+  background-image:
+    radial-gradient(circle, rgba(37, 20, 10, 0.42) 0 0.055rem, transparent 0.06rem),
+    radial-gradient(circle, rgba(255, 238, 198, 0.35) 0 0.045rem, transparent 0.052rem);
+  background-position: 0 0, 0.21rem 0.27rem;
+  background-size: 0.42rem 0.42rem, 0.58rem 0.58rem;
+}
+
+.memory-book {
+  isolation: isolate;
+}
+
+.chapter {
+  min-height: 100svh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.25rem, 3vw, 3rem);
+  perspective: 1800px;
+}
+
+.chapter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(55, 27, 10, 0.26), transparent 13%, transparent 88%, rgba(55, 27, 10, 0.18)),
+    radial-gradient(ellipse at center, transparent 44%, rgba(40, 19, 8, 0.22) 100%);
+  opacity: 0.62;
+}
+
+.cover,
+.ending {
+  min-height: 100svh;
+}
+
+.journal-page {
+  position: relative;
+  z-index: 2;
+  width: min(86vw, 48rem);
+  min-height: min(72svh, 38rem);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4.5rem);
+  background:
+    linear-gradient(rgba(116, 72, 34, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 18%, transparent 82%, rgba(76, 43, 20, 0.08)),
+    #edd2a2;
+  background-size: 100% 2.35rem, 100% 100%, 100% 100%;
+  border: 1px solid rgba(83, 49, 24, 0.26);
+  box-shadow:
+    0 2.4rem 5rem rgba(46, 25, 11, 0.28),
+    0 0 0 0.5rem rgba(255, 234, 184, 0.16) inset,
+    0 -1.2rem 3.5rem rgba(93, 54, 23, 0.11) inset;
+  transform: rotate(-1.2deg);
+}
+
+.journal-page::before,
+.journal-page::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.journal-page::before {
+  inset: 0.9rem;
+  border: 2px dashed rgba(89, 51, 25, 0.22);
+  transform: rotate(0.45deg);
+}
+
+.journal-page::after {
+  width: 42%;
+  height: 0.7rem;
+  left: 29%;
+  bottom: 4.4rem;
+  border-bottom: 0.16rem solid rgba(150, 72, 55, 0.38);
+  border-radius: 50%;
+  transform: rotate(-1deg);
+}
+
+.ending-card {
+  transform: rotate(1deg);
+}
+
+.cover-mark,
+.ending-mark {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-family: "Segoe Print", "STXingkai", "华文行楷", "KaiTi", "楷体", cursive;
+  font-size: clamp(4rem, 14vw, 10.5rem);
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1;
+  color: rgba(54, 30, 15, 0.92);
+  text-shadow:
+    0 0.18rem 0 rgba(255, 236, 189, 0.26),
+    0 1.2rem 3rem rgba(45, 24, 11, 0.22);
+  transform: translateY(0.25rem) rotate(-2deg);
+}
+
+.cover-mark::after,
+.ending-mark::after {
+  content: "";
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 0.08em;
+  height: 0.05em;
+  background: rgba(77, 43, 21, 0.25);
+  filter: blur(0.08rem);
+}
+
+.ending-mark {
+  font-size: clamp(3.6rem, 11vw, 8.2rem);
+  transform: translateY(0.25rem) rotate(1.6deg);
+}
+
+.journal-kicker,
+.journal-note {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-family: "Segoe Print", "KaiTi", "楷体", cursive;
+  color: rgba(75, 42, 22, 0.72);
+  text-align: center;
+}
+
+.journal-kicker {
+  align-self: start;
+  margin-bottom: clamp(1.2rem, 4vw, 2.7rem);
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.journal-note {
+  margin-top: clamp(1.2rem, 4vw, 2.5rem);
+  font-size: clamp(1.15rem, 3vw, 1.85rem);
+  transform: rotate(0.8deg);
+}
+
+.doodle {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.tape {
+  width: clamp(5rem, 13vw, 8rem);
+  height: clamp(1.5rem, 3vw, 2rem);
+  top: clamp(1rem, 2.5vw, 1.8rem);
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.28) 0 0.34rem, transparent 0.34rem 0.68rem),
+    rgba(224, 175, 108, 0.76);
+  box-shadow: 0 0.25rem 0.7rem rgba(54, 31, 14, 0.13);
+  opacity: 0.88;
+}
+
+.tape-left {
+  left: clamp(2rem, 7vw, 5rem);
+  transform: rotate(-9deg);
+}
+
+.tape-right {
+  right: clamp(2rem, 7vw, 5rem);
+  transform: rotate(8deg);
+}
+
+.heart {
+  width: clamp(1.7rem, 4vw, 2.7rem);
+  height: clamp(1.7rem, 4vw, 2.7rem);
+  border: 0.18rem solid var(--rose);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  border: 0.18rem solid var(--rose);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+}
+
+.heart::before {
+  left: -52%;
+  top: 0;
+  border-right-color: transparent;
+}
+
+.heart::after {
+  left: 0;
+  top: -52%;
+  border-bottom-color: transparent;
+}
+
+.heart-one {
+  left: clamp(2rem, 9vw, 6rem);
+  bottom: clamp(4rem, 10vw, 7rem);
+}
+
+.heart-two {
+  right: clamp(2rem, 9vw, 6rem);
+  top: clamp(7rem, 12vw, 9rem);
+  width: clamp(1.1rem, 3vw, 1.8rem);
+  height: clamp(1.1rem, 3vw, 1.8rem);
+  opacity: 0.62;
+}
+
+.sparkle {
+  width: clamp(1.5rem, 3vw, 2.2rem);
+  height: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+.sparkle::before,
+.sparkle::after {
+  content: "";
+  position: absolute;
+  inset: 46% 0 auto;
+  height: 0.18rem;
+  background: var(--mustard);
+  border-radius: 999px;
+}
+
+.sparkle::after {
+  transform: rotate(90deg);
+}
+
+.sparkle-one {
+  right: clamp(5rem, 13vw, 9rem);
+  bottom: clamp(5rem, 12vw, 8rem);
+  transform: rotate(17deg);
+}
+
+.sparkle-two {
+  left: clamp(5rem, 12vw, 8rem);
+  top: clamp(6rem, 12vw, 8.5rem);
+  transform: rotate(-12deg) scale(0.75);
+  opacity: 0.7;
+}
+
+.photo-page {
+  opacity: 0.26;
+  transform: translateY(2.4rem);
+  transition: opacity 1600ms ease, transform 1600ms cubic-bezier(0.2, 0.72, 0.1, 1);
+}
+
+.photo-page.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.album-sheet {
+  --tilt: -2deg;
+  position: relative;
+  z-index: 2;
+  width: min(92vw, 78rem);
+  height: min(88svh, 58rem);
+  margin: 0;
+  padding: clamp(0.7rem, 1.6vw, 1.35rem);
+  background:
+    linear-gradient(90deg, rgba(68, 36, 16, 0.18), transparent 5%, transparent 95%, rgba(68, 36, 16, 0.12)),
+    #f2d7a0;
+  border: 1px solid rgba(76, 42, 20, 0.22);
+  box-shadow:
+    0 2.2rem 5rem var(--shadow),
+    0 0.2rem 0.8rem rgba(255, 237, 190, 0.2) inset,
+    -0.9rem 0 2.2rem rgba(70, 37, 15, 0.2) inset;
+  transform: rotateY(var(--turn, 0deg)) rotateZ(var(--tilt));
+  transform-origin: left center;
+  transition: transform 1200ms cubic-bezier(0.2, 0.8, 0.14, 1), filter 900ms ease;
+  filter: sepia(0.13) saturate(0.95) contrast(0.98);
+}
+
+.photo-page:nth-of-type(2n) .album-sheet {
+  --tilt: 1.8deg;
+}
+
+.photo-page.is-visible .album-sheet {
+  --turn: -4deg;
+}
+
+.album-sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0.42rem auto 0.42rem 0.42rem;
+  width: clamp(1.3rem, 2.5vw, 2.6rem);
+  background:
+    linear-gradient(90deg, rgba(53, 28, 12, 0.2), rgba(255, 238, 191, 0.1) 48%, transparent),
+    repeating-linear-gradient(to bottom, rgba(62, 34, 15, 0.22) 0 0.12rem, transparent 0.12rem 1.3rem);
+  opacity: 0.7;
+}
+
+.album-sheet::after {
+  content: "";
+  position: absolute;
+  inset: clamp(0.7rem, 1.6vw, 1.35rem);
+  pointer-events: none;
+  box-shadow:
+    0 0 0 1px rgba(68, 38, 18, 0.16) inset,
+    0 0 3.5rem rgba(75, 43, 21, 0.18) inset;
+}
+
+.album-sheet img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: rgba(75, 42, 20, 0.1);
+}
+
+@media (max-width: 720px) {
+  .chapter {
+    padding: 1rem;
+  }
+
+  .album-sheet {
+    width: 94vw;
+    height: 84svh;
+    --tilt: -0.8deg;
+  }
+
+  .photo-page:nth-of-type(2n) .album-sheet {
+    --tilt: 0.7deg;
+  }
+
+  .photo-page.is-visible .album-sheet {
+    --turn: -2deg;
+  }
+
+  .journal-page {
+    width: 90vw;
+    min-height: 66svh;
+  }
+
+  .journal-kicker {
+    margin-bottom: 1.4rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .photo-page,
+  .album-sheet {
+    transition: none;
+  }
+}
